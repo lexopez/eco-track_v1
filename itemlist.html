@@ -1,0 +1,1486 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta name="description" content="POS - Bootstrap Admin Template" />
+    <meta
+      name="keywords"
+      content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects"
+    />
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Eco-Track | Item List</title>
+
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/favicon.jpg"
+    />
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css" />
+
+    <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" />
+
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="assets/plugins/fontawesome/css/fontawesome.min.css"
+    />
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css" />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+
+      @media (min-width: 768px) {
+
+      /* Sidebar transition */
+      .sidebar {
+        width: 260px;
+        transition: all 0.3s ease;
+      }
+
+      /* Collapsed sidebar */
+      .sidebar.collapsed {
+        width: 70px;
+      }
+
+      .sidebar.collapsed .sidebar-menu ul li a span {
+        display: none; /* hide text labels */
+      }
+
+      .sidebar.collapsed .submenu ul {
+        display: none; /* hide submenus */
+      }
+
+      .sidebar.collapsed img {
+        margin: 0 auto;
+        display: block;
+      }
+
+      /* Adjust content area */
+      .page-wrapper {
+        transition: margin-left 0.3s ease;
+        margin-left: 250px;
+      }
+
+      .page-wrapper.expanded {
+        margin-left: 70px;
+      }
+    }
+
+      /* Sidebar toggle button */
+      /* Sidebar toggle button (desktop view) */
+      #sidebarToggle {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 20px;
+        color: #333;
+        margin-right: 10px;
+        transition: color 0.2s ease;
+      }
+
+      #sidebarToggle:hover {
+        color: #0d6efd;
+      }
+
+      /* Hide the toggle button on mobile view */
+      @media (max-width: 768px) {
+        #sidebarToggle {
+          display: none !important;
+        }
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div id="global-loader">
+      <div class="whirly-loader"></div>
+    </div>
+
+    <div class="main-wrapper">
+      <div class="header">
+        <div class="header-left active d-flex align-items-center">
+          <button id="sidebarToggle" title="Toggle sidebar" class="ms-2">
+            <i class="fas fa-bars"></i>
+          </button>
+          <a href="index.html" class="logo me-3">
+            <h2>Eco-Track</h2>
+          </a>
+          <a href="index.html" class="logo-small">
+            <img src="assets/img/favicon.jpg" alt="" />
+          </a>
+          
+        </div>
+
+        <a id="mobile_btn" class="mobile_btn" href="#sidebar">
+          <span class="bar-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </a>
+
+        <ul class="nav user-menu">
+          <li class="nav-item">
+            <div class="top-nav-search">
+              <a href="javascript:void(0);" class="responsive-search">
+                <i class="fa fa-search"></i>
+              </a>
+              <form action="#">
+                <div class="searchinputs">
+                  <input type="text" id="searchInput" placeholder="Search Here ..." />
+                  <div id="global-search-results" class="search-result-list" style="position: absolute; background: white; z-index: 1000; width: 100%; display: none;">
+                    <!-- Results will appear here -->
+                  </div>
+                  <div class="search-addon">
+                    <span
+                      ><img src="assets/img/icons/closes.svg" alt="img"
+                    /></span>
+                  </div>
+                </div>
+                <a class="btn" id="searchdiv"
+                  ><img src="assets/img/icons/search.svg" alt="img"
+                /></a>
+              </form>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              href="javascript:void(0);"
+              class="dropdown-toggle nav-link"
+              data-bs-toggle="dropdown"
+            >
+              <img src="assets/img/icons/notification-bing.svg" alt="img" />
+              <span id="notifBadge"></span>
+            </a>
+            <div class="dropdown-menu notifications">
+              <div class="topnav-dropdown-header">
+                <span class="notification-title">Notifications</span>
+              </div>
+              <div class="noti-content">
+                <ul class="notification-list" id="notifList"></ul>
+              </div>
+              <div class="topnav-dropdown-footer">
+                <a href="activities.html">View all Notifications</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown has-arrow main-drop">
+            <a
+              href="javascript:void(0);"
+              class="dropdown-toggle nav-link userset"
+              data-bs-toggle="dropdown"
+            >
+              <span class="user-img"
+                ><img src="assets/img/nature.jpg" alt="" />
+                <span class="status online"></span
+              ></span>
+            </a>
+            <div class="dropdown-menu menu-drop-user">
+              <div class="profilename">
+                <div class="profileset">
+                  <div class="profilesets">
+                    <h6 id="userEmail">user@email.com</h6>
+                    <h5 id="userRole">Role</h5>
+                  </div>
+                </div>
+                <hr class="m-0" />
+            
+                <!-- Admin-only links -->
+                <a class="dropdown-item" href="profile.html" id="profileLink">
+                  <i class="me-2" data-feather="user"></i> My Profile
+                </a>
+                <a class="dropdown-item" href="settings.html" id="settingsLink">
+                  <i class="me-2" data-feather="settings"></i> Settings
+                </a>
+            
+                <hr class="m-0" />
+                <button class="dropdown-item logout pb-0" onclick="signOut()">
+                  <img src="assets/img/icons/log-out.svg" class="me-2" alt="Logout" />
+                  Logout
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="dropdown mobile-user-menu">
+          <a
+            href="javascript:void(0);"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fa fa-ellipsis-v"></i
+          ></a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="profile.html" id="profileLink2">
+              My Profile
+            </a>
+            <a class="dropdown-item" href="settings.html" id="settingsLink2">
+              Settings
+            </a>
+            <button style="line-height: 30px;padding: 8px 10px" class="dropdown-item" onclick="signOut()">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-inner slimscroll">
+          <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><img src="assets/img/icons/dashboard.svg" alt="img" /><span>
+                    Dashboard</span
+                  >
+                </a>
+              </li>
+              <li class="submenu">
+                <a href="javascript:void(0);"
+                  ><img src="assets/img/icons/product.svg" alt="img" /><span>
+                    Item</span
+                  >
+                  <span class="menu-arrow"></span
+                ></a>
+                <ul>
+                  <li><a href="itemlist.html" class="active">Item List</a></li>
+                  <li><a href="categorylist.html">Category List</a></li>
+                </ul>
+              </li>
+              <li class="submenu">
+                <a href="javascript:void(0);"
+                  ><img src="assets/img/icons/transfer1.svg" alt="img" /><span>
+                    Issued Item</span
+                  >
+                  <span class="menu-arrow"></span
+                ></a>
+                <ul>
+                  <li><a href="issueditem.html">Manage</a></li>
+                </ul>
+              </li>
+              <li class="submenu">
+                <a href="javascript:void(0);"
+                  ><img src="assets/img/icons/return1.svg" alt="img" /><span>
+                    Returned Issued Item</span
+                  >
+                  <span class="menu-arrow"></span
+                ></a>
+                <ul>
+                  <li><a href="returnedissueditem.html">Manage</a></li>
+                </ul>
+              </li>
+              <li class="submenu">
+                <a href="javascript:void(0);"
+                  ><img src="assets/img/icons/time.svg" alt="img" /><span>
+                    Report</span
+                  >
+                  <span class="menu-arrow"></span
+                ></a>
+                <ul>
+                  <li><a href="inventoryreport.html">Inventory Report</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-wrapper">
+        <div class="content">
+          <div class="page-header">
+            <div class="page-title">
+              <h4>Item List</h4>
+              <h6>Manage your items</h6>
+            </div>
+            <div class="page-btn">
+              <div>
+                <a href="additem.html" class="btn btn-added"
+                  ><img
+                    src="assets/img/icons/plus.svg"
+                    alt="img"
+                    class="me-2"
+                  />Add new item</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="table-top">
+                <div class="search-set">
+                  <div class="search-input">
+                    <a class="btn btn-searchset">
+                      <img src="assets/img/icons/search-white.svg" alt="img" />
+                    </a>
+                  </div>
+                </div>
+                <div class="wordset">
+                  <ul>
+                    <li>
+                      <a
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="export to excel"
+                        onclick="exportToExcel()"
+                        ><img src="assets/img/icons/excel.svg" alt="img"
+                      /></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="loadingOverlay" style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                display: none;
+              ">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table datanew" id="table">
+                  <thead>
+                    <tr>
+                      <th>Item ID</th>
+                      <th>Item Name</th>
+                      <th>Category</th>
+                      <th>Brand</th>
+                      <th>Instock</th>
+                      <th>Date</th>
+                      <th class="no-export">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="item-table-body"></tbody>
+                </table>
+              </div>
+
+              <div
+                class="modal fade"
+                id="userModal"
+                tabindex="-1"
+                aria-labelledby="userModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="userModalLabel">
+                        Edit Item
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <form id="userForm" enctype="multipart/form-data">
+                        <div class="row">
+                          <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Item Name</label>
+                              <input type="text" id="item_name" required />
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Category</label>
+                              <select id="category" class="form-control" required>
+                                <option value="" disabled selected>Select Category</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Brand</label>
+                              <input type="text" id="brand" required/>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Date </label>
+                              <div class="input-groupicon">
+                                <input
+                                  type="text"
+                                  placeholder="DD-MM-YYYY"
+                                  class="datetimepicker"
+                                  id="date1"
+                                  required
+                                />
+                                <div class="addonset">
+                                  <img src="assets/img/icons/calendars.svg" alt="img" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        type="submit"
+                        class="btn btn-submit"
+                        form="userForm"
+                        id="submitBtn"
+                      >
+                        Submit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="modal fade"
+                id="userModal2"
+                tabindex="-1"
+                aria-labelledby="userModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="userModalLabel">
+                        Add stock
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <form id="userForm2" enctype="multipart/form-data">
+                        <div class="row">
+                          <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Quantity</label>
+                              <input type="number" id="quantity2" min="1" class="form-control" required />
+                              <small
+                                id="quantityLimit2"
+                                class="text-muted"
+                              ></small>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Date </label>
+                              <div class="input-groupicon">
+                                <input
+                                  type="text"
+                                  placeholder="DD-MM-YYYY"
+                                  class="datetimepicker"
+                                  id="date2"
+                                  required
+                                />
+                                <div class="addonset">
+                                  <img src="assets/img/icons/calendars.svg" alt="img" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        type="submit"
+                        class="btn btn-submit"
+                        form="userForm2"
+                        id="submitBtn2"
+                      >
+                        Submit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="modal fade"
+                id="userModal3"
+                tabindex="-1"
+                aria-labelledby="userModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="userModalLabel">
+                        Issue item
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <form id="userForm3" enctype="multipart/form-data">
+                        <div class="row">
+                          <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Quantity</label>
+                              <input type="number" id="quantity3" min="1" class="form-control" required />
+                              <small id="quantityLimit3" class="text-muted"></small>
+                            </div>
+                          </div>
+        
+                          <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Purpose of Issuance</label>
+                              <input type="text" id="purpose_of_issuance" required/>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Status</label>
+                              <select class="form-control" id="status" required>
+                                <option selected disabled>Select</option>
+                                <option value="returnable">Returnable</option>
+                                <option value="consumable">Consumable</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Issued To</label>
+                              <input type="text" id="issued_to" required/>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label>Date </label>
+                              <div class="input-groupicon">
+                                <input
+                                  type="text"
+                                  placeholder="DD-MM-YYYY"
+                                  class="datetimepicker"
+                                  id="date3"
+                                  required
+                                />
+                                <div class="addonset">
+                                  <img src="assets/img/icons/calendars.svg" alt="img" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        type="submit"
+                        class="btn btn-submit"
+                        form="userForm3"
+                        id="submitBtn3"
+                      >
+                        Submit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.getElementById("sidebar");
+        const pageWrapper = document.querySelector(".page-wrapper");
+        const toggleBtn = document.getElementById("sidebarToggle");
+        let tooltipInstances = [];
+
+        // Initialize or destroy tooltips
+        function manageTooltips(enable) {
+          const sidebarItems = sidebar.querySelectorAll(".sidebar-menu ul li");
+
+          if (enable) {
+            // Add tooltip attributes and initialize Bootstrap tooltips
+            sidebarItems.forEach(li => {
+              const linkText = li.querySelector("span")?.innerText?.trim();
+              if (linkText) {
+                li.setAttribute("data-bs-toggle", "tooltip");
+                li.setAttribute("data-bs-placement", "right");
+                li.setAttribute("title", linkText);
+              }
+            });
+
+            tooltipInstances = Array.from(
+              document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            ).map(el => new bootstrap.Tooltip(el));
+          } else {
+            // Dispose tooltips and remove attributes
+            tooltipInstances.forEach(instance => instance.dispose());
+            tooltipInstances = [];
+
+            sidebarItems.forEach(li => {
+              li.removeAttribute("data-bs-toggle");
+              li.removeAttribute("data-bs-placement");
+              li.removeAttribute("title");
+            });
+          }
+        }
+
+        // Toggle sidebar collapse
+        toggleBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("collapsed");
+          pageWrapper.classList.toggle("expanded");
+
+          const isCollapsed = sidebar.classList.contains("collapsed");
+          manageTooltips(isCollapsed);
+
+          localStorage.setItem("sidebarCollapsed", isCollapsed);
+        });
+
+        // Restore saved state
+        const isCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
+        if (isCollapsed) {
+          sidebar.classList.add("collapsed");
+          pageWrapper.classList.add("expanded");
+        }
+
+        // Initialize tooltips based on saved state
+        manageTooltips(isCollapsed);
+      });
+    </script>
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- notifications and profile -->
+    <script type="module">
+      import supabase from "./assets/js/supabase.js";
+
+      // checking user
+      async function setUserDropdown() {
+        const { data: { user }, error } = await supabase.auth.getUser();
+
+        if (error || !user) return;
+
+        // Fetch custom role from your `users` table
+        const { data: userData } = await supabase
+          .from("users") // change if your table is named differently
+          .select("*")
+          .eq("id", user.id)
+          .single();
+
+        // Show email and role
+        document.getElementById("userEmail").textContent = user.email;
+        document.getElementById("userRole").textContent = userData?.role || 'Unknown';
+
+        // Hide profile/settings for non-admin
+        if (userData?.role !== "admin") {
+          document.getElementById("settingsLink").style.display = "none";
+          document.getElementById("settingsLink2").style.display = "none";
+        }
+
+        if (!userData?.is_allowed_to_edit) {
+          document.getElementById("profileLink").style.display = "none";
+          document.getElementById("profileLink2").style.display = "none";
+        }
+      }
+      setUserDropdown();
+
+      async function generateLowStockNotifications() {
+        // 1. Fetch item list
+        const { data: items, error: itemError } = await supabase
+          .from("Item")
+          .select("id, item_name, brand, category");
+
+        if (itemError) {
+          console.error("Item fetch error:", itemError.message);
+          return;
+        }
+
+        // 2. Fetch quantity sources
+        const { data: addedData } = await supabase
+          .from("item quantity")
+          .select("item_id, quantity");
+
+        const { data: issuedData } = await supabase
+          .from("issued item quantity")
+          .select("item_id, quantity");
+
+        const { data: returnedData } = await supabase
+          .from("returned issued item quantity")
+          .select("item_id, quantity");
+
+        // 3. Group and sum quantities
+        const sumByItemId = (list) => {
+          const result = {};
+          (list || []).forEach(({ item_id, quantity }) => {
+            result[item_id] = (result[item_id] || 0) + (quantity || 0);
+          });
+          return result;
+        };
+
+        const totalAdded = sumByItemId(addedData);
+        const totalIssued = sumByItemId(issuedData);
+        const totalReturned = sumByItemId(returnedData);
+
+        // 4. Process notifications for each item
+        for (const item of items) {
+          const item_id = item.id;
+          const added = totalAdded[item_id] || 0;
+          const issued = totalIssued[item_id] || 0;
+          const returned = totalReturned[item_id] || 0;
+
+          const available = added - issued + returned;
+
+          // Check if any previous notification exists for this item
+          const { data: existingNotifs, error: notifError } = await supabase
+            .from("Notifications")
+            .select("id, is_read")
+            .eq("item_id", item_id)
+            .order("created_at", { ascending: false })
+            .limit(1);
+
+          const existingNotif = existingNotifs?.[0];
+
+          // 📉 Case 1: Stock is low (< 5) — insert if not already notified
+          if (available < 5) {
+            const alreadyHasUnread = existingNotif && !existingNotif.is_read;
+
+            if (!existingNotif) {
+              await supabase.from("Notifications").insert([
+                {
+                  item_id,
+                  item_name: item.item_name,
+                  brand: item.brand,
+                  category: item.category,
+                  available,
+                  is_read: false,
+                },
+              ]);
+            }
+          }
+          else {
+            // If an old notification exists and is already read, delete it
+            if (existingNotif && existingNotif.is_read) {
+              console.log(existingNotif.id);
+              await supabase.from("Notifications").delete().eq("id", existingNotif.id);
+            }
+          }
+        }
+      }
+
+
+
+      async function showUnreadNotifications() {
+        const { data: unread } = await supabase
+          .from("Notifications")
+          .select("*")
+          .eq("is_read", false)
+          .order("created_at", { ascending: false });
+
+        const notifList = document.getElementById("notifList");
+        const badge = document.getElementById("notifBadge");
+
+        
+        badge.textContent = unread.length > 0 ? badge.classList.add("badge", "rounded-pill") : "";
+        badge.textContent = unread.length > 0 ? unread.length : "";
+
+        notifList.innerHTML = unread.slice(0, 4)
+          .map(
+            (n) => `
+            <li class="notification-message">
+              <a href="activities.html">
+                <div class="media d-flex">
+                  <div class="media-body flex-grow-1">
+                    <p class="noti-details">
+                      Low Stock: 
+                      <span class="noti-title">${n.item_name}</span> (${n.category} - ${n.brand})
+                    </p>
+                    <p class="noti-time">
+                      <span class="notification-time">Available: ${n.available}</span>
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </li>`
+          )
+          .join("");
+      }
+
+      document
+      .querySelector('.dropdown-toggle.nav-link')
+      .addEventListener('click', async () => {
+        // Mark all as read
+        await supabase
+          .from("Notifications")
+          .update({ is_read: true })
+          .eq("is_read", false);
+
+        // Clear badge and reload
+        document.getElementById("notifBadge").textContent = "";
+
+        document.getElementById("notifBadge").classList.remove("badge", "rounded-pill");
+        // showUnreadNotifications(); // Optional: update list view
+      });
+
+      await generateLowStockNotifications(); // check stock and add new ones
+      await showUnreadNotifications(); // show unread count
+
+    </script>
+
+    <!-- authentication and update -->
+    <script type="module">
+      import supabase from "./assets/js/supabase.js";
+
+      // checking session
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        if (session) {
+          console.log("User is signed in:", session.user.email);
+        } else {
+          console.log("No active session");
+          window.location.href = "signin.html";
+        }
+      });
+
+      // checking user if restricted
+      async function userStatus(){
+        const { data: { user } } = await supabase.auth.getUser();
+
+        const { data: profile, error } = await supabase
+          .from("users")
+          .select("status")
+          .eq("id", user.id)
+          .single();
+
+        if (profile?.status === "restricted") {
+          Swal.fire({
+              icon: "info",
+              title: "Notice!!!",
+              text: "Your account has been restricted. Contact admin.",
+              timer: 4000,
+              showConfirmButton: true,
+              timerProgressBar: true,
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+              didOpen: () => {
+                Swal.showLoading();
+              },
+              willClose: async () => {
+                const { error } = await supabase.auth.signOut();
+                if (error) {
+                  console.error("Sign out error:", error.message);
+                  Swal.fire("Sign out failed", error.message, "error");
+                } else {
+                  window.location.href = "signin.html";
+                }
+              }
+            });
+        }
+      }
+      userStatus();
+
+    </script>
+
+    <script type="module">
+      import supabase from "./assets/js/supabase.js";
+
+      async function loadCategories() {
+        const { data, error } = await supabase.from("category").select("category_name");
+
+        if (error) {
+          console.error("Failed to fetch categories:", error);
+          return;
+        }
+
+        const categorySelect = document.getElementById("category");
+
+        data.forEach((cat) => {
+          const option = document.createElement("option");
+          option.value = cat.category_name;
+          option.textContent = cat.category_name;
+          categorySelect.appendChild(option);
+        });
+      }
+
+      // Call it on page load
+      loadCategories();
+    </script>
+
+    <!-- fetch items -->
+    <script>
+      const supabaseUrl = 'https://lkdkcdgbfzxyvlldldwe.supabase.co'
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxrZGtjZGdiZnp4eXZsbGRsZHdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1OTkzMzksImV4cCI6MjA2NTE3NTMzOX0.oNEeMo0lWJ5EXNBjTec5GqP2khoIoOiEMf0wfWBAdw8';
+      const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+      function formatDate(d) {
+        const [day, month, year] = d.split("-");
+        return `${year}-${month}-${day}`;
+      } 
+
+      async function issueItem(item_id, category_id, instockItem){
+
+        document.getElementById("quantity3").disabled = false;
+        if (instockItem == 0){
+          document.getElementById("quantity3").disabled = true;
+        }
+
+        document.getElementById("quantity3").max = instockItem;
+        document.getElementById("quantityLimit3").textContent = `Max value: ${instockItem} (based on instock items.)`;
+
+
+          $("#userForm3").off("submit").on("submit", async (e) => {
+              e.preventDefault();
+
+              const submitBtn = document.getElementById("submitBtn3");
+              submitBtn.disabled = true;
+              submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...`;
+
+              const quantity = document.getElementById("quantity3").value.trim();
+              const purpose_of_issuance = document.getElementById("purpose_of_issuance").value.trim();
+              const status = document.getElementById("status").value.trim();
+              const issued_to = document.getElementById("issued_to").value.trim();
+              const date = formatDate(document.getElementById("date3").value.trim());
+
+              const { data, error } = await supabase.from("issued item quantity").insert([
+                {
+                  category_id,
+                  item_id,
+                  quantity,
+                  purpose_of_issuance,
+                  status,
+                  issued_to,
+                  date,
+                },
+              ]);
+
+              if (error) {
+                console.error("Insert error:", error);
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Submit";
+                Swal.fire({
+                  icon: "error",
+                  title: "Error Update",
+                  text: "Failed to add. Please try again.",
+                });
+                return;
+              }
+
+              submitBtn.innerHTML = "Submitted ✓";
+              submitBtn.classList.remove("btn-submit");
+              submitBtn.classList.add("btn-success");
+
+              setTimeout(() => {
+                document.getElementById("userForm3").reset();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "Submit";
+                submitBtn.classList.remove("btn-success");
+                submitBtn.classList.add("btn-submit");
+              }, 2000);
+
+              window.location.href = "itemlist.html";
+            });
+
+      }
+
+      async function addStock(item_id, category_id){
+        $("#userForm2").off("submit").on("submit", async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById("submitBtn2");
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...`;
+
+            const quantity = document.getElementById("quantity2").value.trim();
+            const date = formatDate(document.getElementById("date2").value.trim());
+
+            const { error: insertError } = await supabase.from("item quantity").insert([
+              {
+                category_id,
+                item_id,
+                quantity,
+                date,
+              },
+            ]);
+
+            if (insertError) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit";
+              Swal.fire({
+                icon: "error",
+                title: "Error Update",
+                text: "Failed to add. Please try again.",
+              });
+              return;
+            } 
+
+            submitBtn.innerHTML = "Submitted ✓";
+            submitBtn.classList.remove("btn-submit");
+            submitBtn.classList.add("btn-success");
+
+            setTimeout(() => {
+              document.getElementById("userForm2").reset();
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = "Submit";
+              submitBtn.classList.remove("btn-success");
+              submitBtn.classList.add("btn-submit");
+            }, 2000);
+
+            window.location.href = "itemlist.html";
+
+          });
+
+      }
+
+      async function fetchItem(id) {
+        const { data, error } = await supabase
+          .from("Item")
+          .select("*")
+          .eq("id", id)
+          .single();
+
+        if (error) {
+          console.error("Error fetching item:", error.message);
+          return;
+        }
+
+        const item_name = document.getElementById("item_name")
+        const category = document.getElementById("category");
+        const brand = document.getElementById("brand");
+        const date = document.getElementById("date1");
+
+        item_name.value = data.item_name || "";
+        category.value = data.category || "";
+        brand.value = data.brand || "";
+        date.value = data.date || "";
+
+
+        $("#userForm").off("submit").on("submit", async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById("submitBtn");
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...`;
+
+            const updatedData = {
+              item_name: item_name.value,
+              category: category.value,
+              brand: brand.value,
+              date: formatDate(date.value),
+            };
+
+            const { error: updateError } = await supabase
+              .from("Item")
+              .update(updatedData)
+              .eq("id", id);
+
+            if (updateError) {
+              console.error("Update failed:", updateError.message);
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit";
+              alert("Failed to update item. Please try again.");
+              return;
+            }
+
+            submitBtn.innerHTML = "Submitted ✓";
+            submitBtn.classList.remove("btn-submit");
+            submitBtn.classList.add("btn-success");
+
+            setTimeout(() => {
+              document.getElementById("userForm").reset();
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = "Submit";
+              submitBtn.classList.remove("btn-success");
+              submitBtn.classList.add("btn-submit");
+            }, 2000);
+
+            window.location.href = "itemlist.html";
+          });
+
+        }
+
+
+      async function fetchItems() {
+
+        const loading = document.getElementById("loadingOverlay");
+        loading.style.display = "flex";
+
+        const { data, error } = await supabase.from("Item").select("*").order("id", { ascending: false });
+
+        loading.style.display = "none";
+
+        if (error) {
+          console.error("Fetch error:", error);
+          return;
+        }
+
+        if (!data || data.length === 0) {
+          return;
+        }
+
+        const table = $("#table").DataTable();
+
+        // Clear existing data
+        table.clear();
+
+        data.forEach(async function(item) {
+          const { data: itemData, error: itemErr } = await supabase
+            .from("item quantity")
+            .select("quantity")
+            .eq("item_id", item.id)
+
+          const { data: issuedItemData, error: issuedErr } = await supabase
+            .from("issued item quantity")
+            .select("quantity")
+            .eq("item_id", item.id)
+
+          const { data:returnedItemData, error: returnedErr } = await supabase
+            .from("returned issued item quantity")
+            .select("quantity")
+            .eq("item_id", item.id);
+
+          if (itemErr || issuedErr || returnedErr) {
+            console.error("Fetch error:", itemErr || issuedErr || returnedErr);
+            return;
+          }
+
+          const totalItem = itemData.reduce((sum, row) => sum + row.quantity, 0);
+          const totalIssued = issuedItemData.reduce((sum, row) => sum + row.quantity, 0);
+          const totalReturned = returnedItemData.reduce((sum, row) => sum + row.quantity, 0);
+          const result = totalItem - (totalIssued - totalReturned);
+
+          const row = $(`
+            <tr>
+              <td>${item.id}</td>
+              <td>${item.item_name}</td>
+              <td>${item.category}</td>
+              <td>${item.brand}</td>
+              <td>${result}</td>
+              <td>${item.date.split("T")[0]}</td>
+              
+              <td class="no-export">
+                <button
+                  class="me-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#userModal3"
+                  onclick="issueItem(${item.id},${item.category_id}, ${result})"
+                  title="Issue item"
+                  style="background: none; border: none; padding: 0; cursor: pointer; font-size:x-large"
+                >
+                  <img src="assets/img/icons/transfer1.svg" alt="img" />
+                </button>
+                <button
+                  class="me-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#userModal2"
+                  onclick="addStock(${item.id}, ${item.category_id})"
+                  title="Add stock"
+                  style="background: none; border: none; padding: 0; cursor: pointer; font-size:x-large"
+                >
+                  &#43;
+                </button>
+                <button
+                  class="me-3 btn-edit-user"
+                  data-bs-toggle="modal"
+                  data-bs-target="#userModal"
+                  onclick="fetchItem(${item.id})"
+                  title="Edit"
+                  style="background: none; border: none; padding: 0; cursor: pointer;"
+                >
+                  <img src="assets/img/icons/edit.svg" alt="Edit" />
+                </button>
+                <button
+                  class="me-3 btn-delete-user confirm-text"
+                  data-user-id="${item.id}"
+                  onclick="deleteItem(${item.id})"
+                  title="Delete"
+                  style="background: none; border: none; padding: 0; cursor: pointer;"
+                >
+                  <img src="assets/img/icons/delete.svg" alt="Delete" />
+                </button>
+              </td>
+            </tr>
+          `);
+
+          table.row.add(row).draw();
+          
+        });
+
+      }
+
+      fetchItems();
+
+
+      async function deleteItem(id) {
+        const confirm = await Swal.fire({
+          title: "Are you sure?",
+          text: "This item will be permanently deleted!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Yes, delete it!",
+        });
+
+        if (confirm.isConfirmed) {
+          const { error } = await supabase.from("Item").delete().eq("id", id);
+
+          if (error) {
+            Swal.fire("Error", error.message, "error");
+          } else {
+            Swal.fire("Deleted!", "Item has been deleted.", "success").then(() => {
+              window.location.href = "itemlist.html";
+            });
+          }
+        }
+      }
+
+
+      async function signOut() {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+          console.error("Sign out error:", error.message);
+          Swal.fire("Sign out failed", error.message, "error");
+        } else {
+          console.log("Signed out successfully");
+          window.location.href = "signin.html";
+        }
+      }
+    
+    
+    </script>
+
+    <!-- export table -->
+    <script>
+      function exportToExcel() {
+        const table = document.getElementById("table");
+        const rows = Array.from(table.rows);
+        const exportData = [];
+
+        rows.forEach((row) => {
+          const rowData = [];
+          Array.from(row.cells).forEach((cell) => {
+            if (!cell.classList.contains("no-export")) {
+              rowData.push(cell.innerText);
+            }
+          });
+          exportData.push(rowData);
+        });
+
+
+        const worksheet = XLSX.utils.aoa_to_sheet(exportData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+        XLSX.writeFile(workbook, "itemlist_table.xlsx");
+      }
+    </script>
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/js/feather.min.js"></script>
+
+    <script src="assets/js/jquery.slimscroll.min.js"></script>
+
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/plugins/select2/js/select2.min.js"></script>
+
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalerts.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+
+    <script>
+      setTimeout(function () {
+        $("#global-loader");
+        setTimeout(function () {
+          $("#global-loader").fadeOut("slow");
+        }, 0);
+      }, 0);
+    </script>
+
+    <script type="module">
+      import supabase from "./assets/js/supabase.js";
+    
+      const searchInput = document.getElementById("searchInput");
+      const resultBox = document.getElementById("global-search-results");
+    
+      searchInput.addEventListener("input", async () => {
+        const query = searchInput.value.trim().toLowerCase();
+        resultBox.style.display = "none";
+        resultBox.innerHTML = "";
+    
+        if (!query) return;
+    
+        const allMatches = [];
+    
+        // 1. Search Item table
+        const { data: items, error: itemError } = await supabase
+          .from("Item")
+          .select("*")
+          .ilike("item_name", `%${query}%`);
+    
+        if (itemError) {
+          console.error("Item error:", itemError.message);
+        } else {
+          for (const item of items) {
+            allMatches.push({
+              name: item.item_name,
+              page: "itemlist.html",
+              label: "item table",
+            });
+          }
+        }
+    
+        // 2. Search Category table
+        const { data: categories, error: catError } = await supabase
+          .from("category")
+          .select("*")
+          .ilike("category_name", `%${query}%`);
+    
+        if (catError) {
+          console.error("Category error:", catError.message);
+        } else {
+          for (const cat of categories) {
+            allMatches.push({
+              name: cat.category_name,
+              page: "categorylist.html",
+              label: "category table",
+            });
+          }
+        }
+    
+        // 3. If items found, use their IDs to find issued and returned entries
+        if (items?.length > 0) {
+          const itemIds = items.map(i => i.id);
+    
+          // Issued Items
+          const { data: issued, error: issuedError } = await supabase
+            .from("issued item quantity")
+            .select("item_id, quantity, date")
+            .in("item_id", itemIds);
+    
+          if (issuedError) {
+            console.error("Issued item error:", issuedError.message);
+          } else {
+            for (const entry of issued) {
+              const matchedItem = items.find(i => i.id === entry.item_id);
+              allMatches.push({
+                name: `${matchedItem.item_name} (Issued: ${entry.quantity})`,
+                page: "issueditem.html",
+                label: "issued item table",
+              });
+            }
+          }
+    
+          // Returned Issued Items
+          const { data: returned, error: returnedError } = await supabase
+            .from("returned issued item quantity")
+            .select("item_id, quantity, date")
+            .in("item_id", itemIds);
+    
+          if (returnedError) {
+            console.error("Returned item error:", returnedError.message);
+          } else {
+            for (const entry of returned) {
+              const matchedItem = items.find(i => i.id === entry.item_id);
+              allMatches.push({
+                name: `${matchedItem.item_name} (Returned: ${entry.quantity})`,
+                page: "returnedissueditem.html",
+                label: "returned issued item table",
+              });
+            }
+          }
+        }
+    
+        // Display results
+        if (allMatches.length > 0) {
+          const limited = allMatches.slice(0, 15);
+          resultBox.innerHTML = limited.map(item => `
+            <a href="${item.page}">
+              🔍 ${item.name} - ${item.label}
+            </a>
+          `).join("");
+          resultBox.style.display = "block";
+        } else {
+          resultBox.innerHTML = `<p style="padding:8px;">No results found.</p>`;
+          resultBox.style.display = "block";
+        }
+      });
+    
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".top-nav-search")) {
+          resultBox.style.display = "none";
+        }
+      });
+    
+      $(".search-addon span").on("click", function () {
+        resultBox.style.display = "none";
+        searchInput.value = "";
+      });
+    </script>
+    
+  </body>
+</html>
