@@ -1,4 +1,4 @@
-# 🌿 EcoTrack: A Digital Inventory System for Municipal Environmental Resources
+# 🌿 EcoTrack: A Digital Inventory System for Municipal Environmental Resources (Used Supabase as Database)
 
 EcoTrack is a web-based inventory management system developed for the **Municipal Environment and Natural Resources Office (MENRO)** of **Can-avid, Eastern Samar**.  
 It streamlines the management of environmental tools, equipment, and supplies — ensuring accurate tracking, efficient issuance, and transparent reporting.
