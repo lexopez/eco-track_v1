@@ -15,7 +15,6 @@ It streamlines the management of environmental tools, equipment, and supplies �
 ## 🧩 Tech Stack
 - **Frontend:** HTML, CSS (Bootstrap), JavaScript  
 - **Backend:** Supabase (PostgreSQL, REST API)  
-- **Hosting:** (e.g., Netlify / Vercel / Local Server)  
 
 ## ⚙️ Installation
 1. Clone the repository:
